@@ -14,8 +14,10 @@ class ImcController extends Controller
 
     public function imc(Request $request)
     {
-        $imc = $request->weight/($request->height * $request->height);
+        $height = floatval($request->heigth);
+        $weight = floatval($request->weigth);
+        $imc = $weight / ($height * $height);
 
-        return response()->json(["imc",$imc], $request);
+        return response()->json(["imc",$imc]);
     }
 }
